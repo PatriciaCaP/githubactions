@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}Informacion Usuario{% endblock %}
+
+
+{% block content %}
+    <h3 class="display-4 text-center mt-5 mb-5 text-success">Nuevo Registro</h3>
+    <div class="container">
+      <div class="card shadow"> 
+
+        <form class="row g-3" action="/user" method="POST">
+
+            <!-- Controles: Nombre, email -->
+         <div>
+         <div class="bg-secondary p-2 text-dark bg-opacity-10" > 
+         <div class="lead row mb-3">
+          
+            <div class="col">
+            <label>Nombre</label> 
+            <input placeholder="Nombre" class="form-control mb-3" type="text" name="nombre"/>
+        
+            </div>
+
+            <div class="col">
+            <label>Apellido</label> 
+            <input placeholder="Apellido" class="form-control mb-3" type="text" name="apellido"/>
+            </div>
+
+            <div class="col">
+            <label>Email</label>
+             <input placeholder="Email" class="form-control mb-3" type="text" name="email"/>
+            </div>
+              
+  
+            <div class="col">
+            <input type="submit" value="Añadir" class="btn btn-success mb-5 mt-4"/>
+            </div>
+        </div> 
+        </div>
+        </div>
+
+
+        </form>  
+    </div>
+
+        <br>
+        <h3 class="display-6">Usuarios</h3>
+
+        <div class="row" >
+        <table class="table table-group-divider table-striped">      
+            
+            <thead>
+                <tr class="lead table-warning">
+                    <th scope="col">ID Usuario</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Eliminar Usuario</th>
+                
+                </tr>
+            </thead>
+            <br>
+            <br>
+            
+            <tbody>
+                {% for d in data %} <!-- ESTE BUCLE SIRVE PARA ENVIAR LOS DATOS . POR CADA UNO DE LOS ELEMENTOS DE DATA LO VAMOS A IR IMPRIMIENDO DENTRO DE DATA-->
+                    <tr class="lead table table-striped">
+                        <td>{{d.idusuario}}</td>  <!-- LAS DOBLES LLAVES ES PARA ACCEDER A LOS DATOS. CON EL '.' ACCEDEMOS AL DATO EN CONCRETO -->
+                        <td>{{d.nombre}}</td>
+                        <td>{{d.apellido}}</td>
+                        <td>{{d.email}}</td>
+                        <td><a href="{{url_for('routes.delete',idusuario=d.idusuario)}}"  class="btn btn-outline-danger btn-sm">Eliminar</a></td>
+                        
+                    </tr>
+                    {% endfor %}
+            </tbody>
+        
+      </table>
+     </div>
+     <td><a href="{{url_for('routes.productos')}}" class="lead link-success"><b>Añadir Producto</b></a></td>
+     <br>
+     <br>
+    </div>
+
+
+
+{% endblock %}
