@@ -1,4 +1,4 @@
-name: Server CI workflow
+name: Server CI workflowPatri
 
 on:
   push:
