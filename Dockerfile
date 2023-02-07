@@ -10,7 +10,7 @@ COPY . .
 
 EXPOSE 80
 
-WORKDIR /app/appFlask/src
+WORKDIR /app/revive
 
 COPY entrypoint.sh .
 RUN chmod +x entrypoint.sh
